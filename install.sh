@@ -95,10 +95,10 @@ sudo usermod --shell /usr/bin/zsh user
 sudo usermod --shell /usr/bin/zsh root
 
 ## Enlaces simbólicos para root.
-SOURCE_DIR="/home/$(whoami)/InstallArchBspwm/.conf"
-DEST_DIR="/root/.conf"
+SOURCE_DIR="/home/$(whoami)/InstallArchBspwm/.config"
+DEST_DIR="/root/.config"
 #for folder in "$SOURCE_DIR"/*; do if [ -d "$folder" ]; then echo "Carpeta encontrada: $(basename "$folder")"; fi; done
-sudo mkdir -p /root/.conf
+sudo mkdir -p /root/.config
 for folder in "$SOURCE_DIR"/*; do if [ -d "$folder" ]; then folder_name=$(basename "$folder") && sudo rm -rf "$DEST_DIR/$folder_name" && sudo ln -s "/home/$(whoami)/.config/$folder_name" "$DEST_DIR/$folder_name" && echo "Enlace creado: $DEST_DIR/$folder_name -> /home/$(whoami)/.config/$folder_name"; fi; done
 sudo rm -rf /root/.zshrc && sudo ln -s ~/.zshrc /root/.zshrc
 
