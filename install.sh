@@ -32,7 +32,7 @@ sudo pacman -S --noconfirm --needed mesa mesa-utils mesa-demos nvidia nvidia-uti
 sudo pacman -S --noconfirm --needed thunar
 
 ## Instalar yay y fuente de la terminal
-sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+sudo pacman -S --noconfirm --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 yay -Syu --noconfirm --needed
 yay -S --noconfirm --needed ttf-hack-nerd
 
@@ -98,6 +98,7 @@ sudo usermod --shell /usr/bin/zsh root
 SOURCE_DIR="/home/$(whoami)/InstallArchBspwm/.conf"
 DEST_DIR="/root/.conf"
 #for folder in "$SOURCE_DIR"/*; do if [ -d "$folder" ]; then echo "Carpeta encontrada: $(basename "$folder")"; fi; done
+sudo mkdir -p /root/.conf
 for folder in "$SOURCE_DIR"/*; do if [ -d "$folder" ]; then folder_name=$(basename "$folder") && sudo rm -rf "$DEST_DIR/$folder_name" && sudo ln -s "/home/$(whoami)/.config/$folder_name" "$DEST_DIR/$folder_name" && echo "Enlace creado: $DEST_DIR/$folder_name -> /home/$(whoami)/.config/$folder_name"; fi; done
 sudo rm -rf /root/.zshrc && sudo ln -s ~/.zshrc /root/.zshrc
 
